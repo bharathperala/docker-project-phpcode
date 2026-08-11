@@ -16,9 +16,9 @@ services:
       - mynetwork
     ports:
       - "1111:80"
-    depands_on:
+    depends_on:
       - mysqldb
 
- networks:
-   mynetwork:
-     driver: overlay
+networks:
+  mynetwork:
+    driver: overlay
