@@ -1,0 +1,24 @@
+services:
+  mysqldb:
+    image: bharath0803/php:db-v1
+    deploy:
+      replicas: 1
+    networks:
+      - mynetwork
+    ports:
+      - "3306:3306"
+
+  application:
+    image: bharath0803/php:app-v1
+    deploy:
+      replicas: 3
+    networks:
+      - mynetwork
+    ports:
+      - "1111:80"
+    depands_on:
+      - mysqldb
+
+ networks:
+   mynetwork:
+     driver: overlay
